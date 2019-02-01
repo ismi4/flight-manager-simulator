@@ -21,8 +21,15 @@ public class Flight {
 	//city where the flight is going
 	private String destination;
 	
-	public Flight() {
-		
+
+	
+	public Flight(Airline airline, Airport airport, String origin, String destination, Integer id) {
+		this.airline = airline;
+		this.airport = airport;
+		this.origin = origin;
+		this.destination = destination;
+		this.id = id;
+
 	}
 
 	public Integer getId() {
@@ -72,6 +79,7 @@ public class Flight {
 	public void setAirport(Airport airport) {
 		this.airport = airport;
 	}
+	
 
 	@Override
 	public String toString() {
