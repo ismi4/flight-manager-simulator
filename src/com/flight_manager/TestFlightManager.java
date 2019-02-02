@@ -22,11 +22,11 @@ public class TestFlightManager {
 		System.out.println("4. BOOK A SEAT ON FLIGHT");
 		System.out.println("-------------------------------------------------------------");
 
-		int option = unosIntegera();
+		int option = intInput();
 
 		while (option != 1 && option != 2 && option != 3 && option != 4) {
 			System.out.println("Please, enter a valid menu input!");
-			option = unosIntegera();
+			option = intInput();
 		}
 
 		switch (option) {
@@ -108,14 +108,13 @@ public class TestFlightManager {
 		String destination = input.nextLine();
 
 		System.out.println("ENTER ID: ");
-		Integer id = unosIntegera();
+		Integer id = intInput();
 
 		System.out.println("ENTER NUMBER OF SEATS PER ROW: ");
-		Integer numberOfSeatsPerRow = unosIntegera();
+		Integer numberOfSeatsPerRow = intInput();
 
 		if (!sysManager.createFlight(sysManager.getAirlineByName(airlineName), sysManager.getAirportByName(airportName),
-				flightName, origin, destination, id, numberOfSeatsPerRow).equals(null)
-				&& !sysManager.createSeats(airlineName, id, numberOfSeatsPerRow).equals(null)) {
+				flightName, origin, destination, id, numberOfSeatsPerRow).equals(null)) {
 			System.out.println("FLIGHT HAS BEEN SUCCESSFULLY CREATED.");
 			return true;
 		}
@@ -134,7 +133,7 @@ public class TestFlightManager {
 		String flightName = input.nextLine();
 
 		System.out.println("ENTER A SEAT NUMBER: ");
-		Integer seatNumber = unosIntegera();
+		Integer seatNumber = intInput();
 
 		System.out.println("ENTER A ROW: (A, B, C, D, E, F ");
 		String row = new String(input.next());
@@ -149,13 +148,13 @@ public class TestFlightManager {
 
 	}
 
-	public static int unosIntegera() {
+	public static int intInput() {
 
-		int uneseniBroj = 0;
+		int numberInput = 0;
 
 		while (true)
 			try {
-				uneseniBroj = input.nextInt();
+				numberInput = input.nextInt();
 				break;
 			} catch (Exception e) {
 				System.out.println("Please, enter a valid input!");
@@ -163,7 +162,7 @@ public class TestFlightManager {
 				continue;
 			}
 
-		return uneseniBroj;
+		return numberInput;
 
 	}
 
