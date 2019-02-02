@@ -61,4 +61,27 @@ public class Seat {
 		return "Seat [row=" + row + ", seatNumber=" + seatNumber + ", available=" + available + "]";
 	}
 
+	@Override
+	 public boolean equals(Object obj) {
+	 if (this == obj)
+	 return true;
+	 if (obj == null)
+	 return false;
+	 if (getClass() != obj.getClass())
+	 return false;
+	 Seat other = (Seat) obj;
+	 if (available != other.available)
+	 return false;
+	 if (row == null) {
+	 if (other.row != null)
+	 return false;
+	 } else if (!row.equals(other.row))
+	 return false;
+	 if (seatNumber == null) {
+	 if (other.seatNumber != null)
+	 return false;
+	 } else if (!seatNumber.equals(other.seatNumber))
+	 return false;
+	 return true;
+	 }
 }

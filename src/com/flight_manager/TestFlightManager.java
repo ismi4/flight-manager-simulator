@@ -8,7 +8,7 @@ public class TestFlightManager {
 	static Scanner input = new Scanner(System.in);
 
 	public static void main(String[] args) {
-	
+
 		menu();
 
 	}
@@ -57,7 +57,7 @@ public class TestFlightManager {
 		System.out.println("-----------------AIRPORT CREATION-----------------");
 		System.out.println("ENTER AN AIRPORT NAME: (THREE LETTERS STRICTLY!)");
 
-		if (!sysManager.createAirport(input.next()).equals(null)) {
+		if (!(sysManager.createAirport(input.next()) == null)) {
 			System.out.println("-------------------------------------------------------------");
 			System.out.println("AIRPORT HAS BEEN SUCCESSFULLY CREATED.");
 
@@ -76,7 +76,7 @@ public class TestFlightManager {
 		System.out.println("-----------------AIRLINE CREATION-----------------");
 		System.out.println("ENTER AN AIRLINE NAME: (SIX LETTERS MAXIMUM!)");
 
-		if (!sysManager.createAirline(input.next()).equals(null)) {
+		if (!(sysManager.createAirline(input.next()) == null)) {
 			System.out.println("-------------------------------------------------------------");
 			System.out.println("AIRLINE HAS BEEN SUCCESSFULLY CREATED.");
 			return true;
@@ -97,6 +97,7 @@ public class TestFlightManager {
 
 		System.out.println("ENTER AN AIRPORT NAME: ");
 		String airportName = input.next();
+		input.nextLine();
 
 		System.out.println("ENTER A FLIGHT NAME: ");
 		String flightName = input.nextLine();
@@ -109,14 +110,19 @@ public class TestFlightManager {
 
 		System.out.println("ENTER ID: ");
 		Integer id = intInput();
+		input.nextLine();
 
 		System.out.println("ENTER NUMBER OF SEATS PER ROW: ");
 		Integer numberOfSeatsPerRow = intInput();
+		input.nextLine();
 
-		if (!sysManager.createFlight(sysManager.getAirlineByName(airlineName), sysManager.getAirportByName(airportName),
-				flightName, origin, destination, id, numberOfSeatsPerRow).equals(null)) {
-			System.out.println("FLIGHT HAS BEEN SUCCESSFULLY CREATED.");
-			return true;
+		if (!sysManager.checkAirlineName(airlineName) && !sysManager.checkAirportName(airportName)) {
+			if (!(sysManager.createFlight(sysManager.getAirlineByName(airlineName),
+					sysManager.getAirportByName(airportName), flightName, origin, destination, id,
+					numberOfSeatsPerRow) == null)) {
+				System.out.println("FLIGHT HAS BEEN SUCCESSFULLY CREATED.");
+				return true;
+			}
 		}
 		System.out.println("WE HAVE ENCOUNTERED AN ISSUE DURING CREATION.");
 		return false;
@@ -128,6 +134,7 @@ public class TestFlightManager {
 
 		System.out.println("ENTER AN AIRLINE NAME: ");
 		String airlineName = input.next();
+		input.nextLine();
 
 		System.out.println("ENTER A FLIGHT NAME: ");
 		String flightName = input.nextLine();
@@ -135,7 +142,7 @@ public class TestFlightManager {
 		System.out.println("ENTER A SEAT NUMBER: ");
 		Integer seatNumber = intInput();
 
-		System.out.println("ENTER A ROW: (A, B, C, D, E, F ");
+		System.out.println("ENTER A ROW: (A, B, C, D, E, F) ");
 		String row = new String(input.next());
 
 		if (sysManager.bookSeat(airlineName, flightName, seatNumber, row)) {
@@ -156,7 +163,7 @@ public class TestFlightManager {
 			try {
 				numberInput = input.nextInt();
 				break;
-			} catch (Exception e) {
+			} catch (Exception Se) {
 				System.out.println("Please, enter a valid input!");
 				input.nextLine();
 				continue;

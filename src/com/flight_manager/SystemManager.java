@@ -259,4 +259,34 @@ public class SystemManager {
 
 	}
 
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	SystemManager other = (SystemManager) obj;
+	if (listOfAirlines == null) {
+		if (other.listOfAirlines != null)
+			return false;
+	} else if (!listOfAirlines.equals(other.listOfAirlines))
+		return false;
+	if (listOfAirports == null) {
+		if (other.listOfAirports != null)
+			return false;
+	} else if (!listOfAirports.equals(other.listOfAirports))
+		return false;
+	if (listOfFlights == null) {
+		if (other.listOfFlights != null)
+			return false;
+	} else if (!listOfFlights.equals(other.listOfFlights))
+		return false;
+	return true;
+}
+	
+	
+
 }
